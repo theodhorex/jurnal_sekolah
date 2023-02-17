@@ -12,6 +12,7 @@
         </style>
     </head>
     <h2 class="mx-3">List mapel di SMK BN</h2>
+    <!-- <a href="#" class="btn btn-primary mx-3 mt-3">Tambah mapel</a> -->
     <div class="form-group mx-3 mt-3">
         <input class="form-control" type="search" name="cari_mapel" id="cari_mapel" placeholder="Cari mapel disini..">
     </div>

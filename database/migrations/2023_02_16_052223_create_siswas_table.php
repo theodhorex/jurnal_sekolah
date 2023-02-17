@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateSiswasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('siswas', function (Blueprint $table) {
-            $table->id()->nullable();
+            $table->id();
             $table->string('nama_siswa')->nullable();
             $table->string('nipd')->nullable();
             $table->string('jk')->nullable();
@@ -33,4 +33,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('siswas');
     }
-};
+}

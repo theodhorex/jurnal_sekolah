@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateJurnalsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,17 +15,17 @@ return new class extends Migration
     {
         Schema::create('jurnals', function (Blueprint $table) {
             $table->id();
-            $table->string('id_kelas')->nullable();
-            $table->string('tanggal')->nullable();
-            $table->string('nama_guru')->nullable();
-            $table->string('kelas')->nullable();
-            $table->string('kompetensi_keahlian')->nullable();
-            $table->string('mapel')->nullable();
-            $table->time('waktu_mulai');
-            $table->time('waktu_selesai');
+            $table->string('id_kelas');
+            $table->string('tanggal');
+            $table->string('nama_guru');
+            $table->string('kelas');
+            $table->string('kompetensi_keahlian');
+            $table->string('mapel');
+            $table->string('waktu_mulai');
+            $table->string('waktu_selesai');
             $table->string('materi_yang_diajarkan');
             $table->string('evaluasi_perkembangan_kbm');
-            $table->string('nama_siswa_yang_bersangkutan')->nullable();
+            $table->string('nama_siswa_yang_bersangkutan');
             $table->string('laporan_perkembangan_siswa');
             $table->timestamps();
         });
@@ -40,4 +40,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('jurnals');
     }
-};
+}
