@@ -78,11 +78,13 @@
             </tr>
         </thead>
         <tbody>
+            @foreach($timeline_kelas as $jurnal)
             <tr>
-                <td class="px-4">Theo</td>
-                <td class="fit text-center">Tidur</td>
-                <td class="fit text-center">15 Menit yang lalu.</td>
+                <td class="px-4">{{ $jurnal -> nama_guru }}</td>
+                <td class="fit text-center">{{ $jurnal -> mapel }}</td>
+                <td class="fit text-center">{{ $jurnal -> created_at -> diffForHumans() }}</td>
             </tr>
+            @endforeach
         </tbody>
     </table>
     <a href="form-jurnal/{{ $kelas->id }}" class="btn btn-primary">+ Tambah jurnal</a>

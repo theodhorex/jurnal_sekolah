@@ -61,6 +61,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('form-jurnal-send/{id}', [MainController::class, 'formJurnalSend'])->name('form-jurnal-send');
 	Route::get('cari-siswa', [MainController::class, 'cariSiswa'])->name('cari-siswa');
 
+	// PDF
+	Route::get('export-pdf/{id}', [MainController::class, 'exportTimelineKelas'])->name('export-timeline-kelas');
+
 	Route::get('tables', function () {
 		return view('tables');
 	})->name('tables');

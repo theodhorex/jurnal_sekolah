@@ -35,7 +35,7 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Dashboard</span>
+                    <span class="nav-link-text ms-1">Beranda</span>
                 </a>
             </li>
             <li class="nav-item mt-2">
@@ -69,7 +69,7 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">User Profile</span>
+                    <span class="nav-link-text ms-1">Profil</span>
                 </a>
             </li>
             @if(Auth::user()->role == 'admin')
@@ -82,7 +82,7 @@
                             class="fas fa-lg fa-list-ul ps-2 pe-2 text-center text-dark {{ (Request::is('user-management') ? 'text-white' : 'text-dark') }} "
                             aria-hidden="true"></i>
                     </div>
-                    <span class="nav-link-text ms-1">User Management</span>
+                    <span class="nav-link-text ms-1">Manajemen Pengguna</span>
                 </a>
             </li>
             @endif
@@ -94,7 +94,7 @@
                             class="fas fa-lg fa-list-ul ps-2 pe-2 text-center text-dark {{ (Request::is('list-kelas') ? 'text-white' : 'text-dark') }} "
                             aria-hidden="true"></i>
                     </div>
-                    <span class="nav-link-text ms-1">List Kelas</span>
+                    <span class="nav-link-text ms-1">Daftar Kelas</span>
                 </a>
             </li>
             @if(Auth::user()->role == 'admin')
@@ -106,7 +106,7 @@
                             class="fas fa-lg fa-book ps-2 pe-2 text-center text-dark {{ (Request::is('list-mapel') ? 'text-white' : 'text-dark') }} "
                             aria-hidden="true"></i>
                     </div>
-                    <span class="nav-link-text ms-1">List Mata Pelajaran</span>
+                    <span class="nav-link-text ms-1">Daftar Mata Pelajaran</span>
                 </a>
             </li>
             @endif

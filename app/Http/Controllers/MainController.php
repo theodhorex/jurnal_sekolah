@@ -92,11 +92,12 @@ class MainController extends Controller
 
     public function detailKelas($id){
         $kelas = Kelas::find($id);  
+        $timeline_kelas = Jurnal::where('id_kelas', $id)->latest()->limit(1)->get();
         $guru_pengampu = $kelas -> guru_pengampu;
         $gurus = str_ireplace('"', '', $guru_pengampu);
         $guruss = explode(',', $gurus);
         $guru = str_ireplace(['[', ']'], '', $guruss);
-        return view('ajax/detail-kelas', compact(['kelas', 'guru']));
+        return view('ajax/detail-kelas', compact(['kelas', 'guru', 'timeline_kelas']));
     }
 
     public function tambahKelas(Request $request){
@@ -113,17 +114,18 @@ class MainController extends Controller
 
     public function timelineKelas($id){
         $kelas = Kelas::find($id);
-        $undone_jurnal_kelas = Jurnal::where('id_kelas', $id)->get();
-        $jurnal_kelas = collect($undone_jurnal_kelas)->map(function ($item) {
-            $carbon = Carbon::createFromFormat('Y-m-d H:i:s', $item['tanggal']);
-            // $timestamp = $carbon->timestamp;
-            // $item['tanggal'] = $timestamp;
-            $item['minggu_ke'] = $carbon->weekOfMonth;
-            $item['bulan_apa'] = $carbon -> month;
-            return $item;
-        });
-        
-        return view('timeline-kelas', compact([ 'kelas', 'jurnal_kelas' ]));
+        $undone_jurnal_kelas = Jurnal::where('id_kelas', $id);
+        // $jurnal_kelas = collect($undone_jurnal_kelas)->map(function ($item) {
+        //     $carbon = Carbon::createFromFormat('Y-m-d H:i:s', $item['tanggal']);
+        //     // $timestamp = $carbon->timestamp;
+        //     // $item['tanggal'] = $timestamp;
+        //     $item['minggu_ke'] = $carbon->weekOfMonth;
+        //     $item['bulan_apa'] = $carbon -> month;
+        //     return $item;
+        // });
+
+        $jurnal_kelas = $undone_jurnal_kelas -> orderBy(DB::raw('MONTH(tanggal)'), 'asc')->get();
+        return view('timeline-kelas', compact([ 'kelas', 'jurnal_kelas']));
     }
 
     public function editGuruPengampu($id){
@@ -196,11 +198,22 @@ class MainController extends Controller
                 return json_encode($get_siswa -> get());
             }
         }else{
-            $get_siswa = Jurnal::all();
+            $get_siswa = Jurnal::all(); 
         }
         
         return view('cari-siswa', compact('get_siswa'));
         // dd($get_siswa);
+    }
+
+
+    // Export PDF
+    public function exportTimelineKelas($id){
+        $data = Jurnal::where('id_kelas', $id)->get();
+        $kelas = Kelas::find($id);
+        $customPaper = array(0,0,567.00,283.80);
+
+        $pdf = PDF::loadView('pdf-view', compact('data'))->setPaper('A4', 'landscape');
+        return $pdf -> stream('Timeline kelas ' . $kelas -> kelas . ' ' . $kelas -> jurusan . ' ' . Carbon::now()->toDateString() . '.pdf');
     }
 
 

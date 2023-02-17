@@ -24,7 +24,7 @@
                                 <a href="#" class="text-decoration-none ms-2">{{ $kelass->tahun_ajaran }}</a>
                             </div>
                             <div class="col-6">
-                                <img src="@if ($kelass->jurusan == 'RPL') {{ asset('assets/img/logo-kelas/Group 4.png') }}@elseif($kelass -> jurusan == 'PPLG'){{ asset('assets/img/logo-kelas/Group 4.png') }}@elseif($kelass->jurusan == 'MM'){{ asset('assets/img/logo-kelas/Group 5.png') }}@elseif($kelass->jurusan == 'TKRO'){{ asset('assets/img/logo-kelas/Group 8.png') }}@elseif($kelass->jurusan == 'TB'){{ asset('assets/img/logo-kelas/Group 6.png') }}@elseif($kelass->jurusan == 'BKP'){{ asset('assets/img/logo-kelas/Group 7.png') }} @endif"
+                                <img src="@if ($kelass->jurusan == 'RPL') {{ asset('assets/img/logo-kelas/Group 4.png') }}@elseif($kelass -> jurusan == 'PPLG'){{ asset('assets/img/logo-kelas/Group 4.png') }}@elseif($kelass->jurusan == 'MM'){{ asset('assets/img/logo-kelas/Group 5.png') }}@elseif($kelass->jurusan == 'TKRO'){{ asset('assets/img/logo-kelas/Group 8.png') }}@elseif($kelass->jurusan == 'TB'){{ asset('assets/img/logo-kelas/Group 6.png') }}@elseif($kelass->jurusan == 'Kuliner'){{ asset('assets/img/logo-kelas/Group 6.png') }}@elseif($kelass->jurusan == 'BKP'){{ asset('assets/img/logo-kelas/Group 7.png') }} @endif"
                                     alt="..." class="avatar shadow float-end">
                             </div>
                         </div>
@@ -47,7 +47,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Akun</h1>
-                    <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group mb-3">
@@ -127,7 +127,7 @@
                     angkatan: $('#angkatan').val(),
                 },
                 success: function(data){
-                    console.log('working');
+                    $('.btn-close').click()
                 },
                 error: function(err){
                     console.log(response.text(err));
