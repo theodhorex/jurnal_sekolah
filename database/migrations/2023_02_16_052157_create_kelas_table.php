@@ -18,7 +18,7 @@ class CreateKelasTable extends Migration
             $table->string('kelas')->nullable();
             $table->string('jurusan')->nullable();
             $table->string('jumlah_siswa')->nullable();
-            $table->string('guru_pengampu')->nullable();
+            $table->longText('guru_pengampu')->nullable();
             $table->string('angkatan')->nullable();
             $table->string('tahun_ajaran')->nullable();
             $table->timestamps();

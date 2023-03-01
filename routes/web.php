@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 // Extend Controller
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\AjaxController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
 	})->name('rtl');
 
 	Route::get('user-management', [MainController::class, 'userManagement'])->name('user-management');
+	Route::get('user-management/ajax', [AjaxController::class, 'listAkun'])->name('user-management-ajax');
 	Route::get('tambah-akun', [MainController::class, 'tambahAkun'])->name('tambah-akun');
 	Route::get('edit-akun/{id}', [MainController::class, 'editAkun'])->name('edit-akun');
 	Route::get('update-akun/{id}', [MainController::class, 'updateAkun'])->name('update-akun');
@@ -51,18 +53,29 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('list-kelas', [MainController::class, 'listKelas'])->name('list-kelas');
 	Route::get('detail-kelas/{id}', [MainController::class, 'detailKelas'])->name('detail-kelas');
+	Route::get('update-kelas/{id}', [MainController::class, 'updateDetailKelas'])->name('update-detail-kelas');
 	Route::get('tambah-kelas', [MainController::class, 'tambahKelas'])->name('tambah-kelas');
 	Route::get('timeline-kelas/{id}', [MainController::class, 'timelineKelas'])->name('timeline-kelas');
+	Route::get('history-timeline', [MainController::class, 'generalTimeline'])->name('general-timeline');
 	Route::get('edit-guru-pengampu/{id}', [MainController::class, 'editGuruPengampu'])->name('edit-guru-pengampu');
 	Route::get('update-guru-pengampu/{id}', [MainController::class, 'updateGuruPengampu'])->name('update-guru-pengampu');
+	Route::get('list-guru-pengampu/{id}', [MainController::class, 'listGuruPengampu'])->name('list-guru-pengampu');
 	Route::get('filter-role', [MainController::class, 'filterRole'])->name('filter-role');
 	Route::get('list-mapel', [MainController::class, 'listMapel'])->name('list-mapel');
 	Route::get('form-jurnal/{id}', [MainController::class, 'formJurnal'])->name('form-jurnal');
 	Route::post('form-jurnal-send/{id}', [MainController::class, 'formJurnalSend'])->name('form-jurnal-send');
+	Route::get('edit-timeline/{id}', [MainController::class, 'editTimeline'])->name('edit-timeline');
+	Route::post('edit-timeline-send/{id}', [MainController::class, 'editTimelineSend'])->name('edit-timeline-send');
+	Route::get('hapus-timeline/{id}', [MainController::class, 'deleteTimeline'])->name('hapus-timeline');
 	Route::get('cari-siswa', [MainController::class, 'cariSiswa'])->name('cari-siswa');
+
+	// Excel
+	Route::post('import-data-siswa', [MainController::class, 'importDataSiswa'])->name('import-data-siswa-excel');
+	Route::post('import-data-guru', [MainController::class, 'importDataGuru'])->name('import-data-guru-excel');
 
 	// PDF
 	Route::get('export-pdf/{id}', [MainController::class, 'exportTimelineKelas'])->name('export-timeline-kelas');
+	Route::get('export-pdf-mandiri{id}', [MainController::class, 'exportTimelineKelass'])->name('export-timeline-kelas-mandiri');
 
 	Route::get('tables', function () {
 		return view('tables');

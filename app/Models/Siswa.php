@@ -15,6 +15,7 @@ class Siswa extends Model
         'nama_siswa',
         'nipd',
         'jk',
-        'kelas'
+        'kelas',
+        'jurusan'
     ];
 }

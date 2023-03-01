@@ -11,7 +11,7 @@
 
 <body>
     @foreach ($data->groupBy(function ($item) {
-        return Carbon\Carbon::parse($item->tanggal)->format('F');
+        return Carbon\Carbon::parse($item->tanggal)->locale('id')->isoFormat('MMMM');
     }) as $month => $datas)
         <h2 class="text-center mb-3">{{ $month }}</h2>
         <table class="table table-bordered">
@@ -27,7 +27,7 @@
                     <th>Materi yang diajarkan</th>
                     <th>Evaluasi perkembangan KBM</th>
                     <th>Laporan perkembangan siswa</th>
-                    <th>Keterangan</th>
+                    {{-- <th>Keterangan</th> --}}
                 </tr>
             </thead>
             <tbody>
@@ -43,7 +43,7 @@
                         <td>{{ $d->materi_yang_diajarkan }}</td>
                         <td>{{ $d->evaluasi_perkembangan_kbm }}</td>
                         <td>{{ $d->laporan_perkembangan_siswa }}</td>
-                        <td>Sementara kosong</td>
+                        {{-- <td>Sementara kosong</td> --}}
                     </tr>
                 @endforeach
             </tbody>

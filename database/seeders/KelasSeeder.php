@@ -19,7 +19,7 @@ class KelasSeeder extends Seeder
         $kelas = [
             [
                 'kelas' => 'X',
-                'jurusan' => 'RPL',
+                'jurusan' => 'PPLG',
                 'jumlah_siswa' => '30',
                 'guru_pengampu' => 'Guru 1',
                 'angkatan' => '10',
@@ -27,7 +27,15 @@ class KelasSeeder extends Seeder
             ],
             [
                 'kelas' => 'X',
-                'jurusan' => 'MM',
+                'jurusan' => 'DKV1',
+                'jumlah_siswa' => '30',
+                'guru_pengampu' => 'Guru 2',
+                'angkatan' => '10',
+                'tahun_ajaran' => '2019/2023'
+            ],
+            [
+                'kelas' => 'X',
+                'jurusan' => 'DKV2',
                 'jumlah_siswa' => '30',
                 'guru_pengampu' => 'Guru 2',
                 'angkatan' => '10',
@@ -43,7 +51,7 @@ class KelasSeeder extends Seeder
             ],
             [
                 'kelas' => 'X',
-                'jurusan' => 'BKP',
+                'jurusan' => 'TKP',
                 'jumlah_siswa' => '30',
                 'guru_pengampu' => 'Guru 4',
                 'angkatan' => '10',
@@ -51,7 +59,7 @@ class KelasSeeder extends Seeder
             ],
             [
                 'kelas' => 'X',
-                'jurusan' => 'TB',
+                'jurusan' => 'KULINER',
                 'jumlah_siswa' => '30',
                 'guru_pengampu' => 'Guru 5',
                 'angkatan' => '10',

@@ -22,7 +22,7 @@
                                     <label>Email</label>
                                     <div class="mb-3">
                                         <input type="email" class="form-control" name="email" id="email"
-                                            placeholder="Email" value="admin@softui.com" aria-label="Email"
+                                            placeholder="Email" aria-label="Email"
                                             aria-describedby="email-addon">
                                         @error('email')
                                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
@@ -31,7 +31,7 @@
                                     <label>Password</label>
                                     <div class="mb-3">
                                         <input type="password" class="form-control" name="password" id="password"
-                                            placeholder="Password" value="secret" aria-label="Password"
+                                            placeholder="Password" aria-label="Password"
                                             aria-describedby="password-addon">
                                         @error('password')
                                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
@@ -47,7 +47,7 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="card-footer text-center pt-0 px-lg-2 px-1">
+                            {{-- <div class="card-footer text-center pt-0 px-lg-2 px-1">
                                 <small class="text-muted">Lupa password? Ganti password
                                     <a href="/login/forgot-password"
                                         class="text-info text-gradient font-weight-bold">disini</a>
@@ -56,7 +56,7 @@
                                     Belum punya akun?
                                     <a href="register" class="text-info text-gradient font-weight-bold">Daftar</a>
                                 </p>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="col-md-6">

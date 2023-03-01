@@ -23,7 +23,7 @@ class GuruSeeder extends Seeder
                 'name' => 'Theo',
                 'email' => 'theo@gmail.com',
                 'role' => 'guru',
-                'mapel' => 'Teknik Tiduran',
+                'mapel' => 'Laravel',
                 'password' => Hash::make('123')
             ],
             [

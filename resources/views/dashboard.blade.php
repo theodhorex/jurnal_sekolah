@@ -1,99 +1,103 @@
 @extends('layouts.user_type.auth')
 
 @section('content')
-    <div class="row">
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-            <div class="card">
-                <div class="card-body p-3">
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="numbers">
-                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Murid</p>
-                                <h5 class="font-weight-bolder mb-0">
-                                    {{ $total_siswa }}
-                                    <span class="text-success text-sm font-weight-bolder">Siswa/i</span>
-                                </h5>
+    @if (Auth::user()->role == 'guru')
+    @elseif(Str::contains(Auth::user()->role, 'k3'))
+    @else
+        <div class="row">
+            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                <div class="card">
+                    <div class="card-body p-3">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="numbers">
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Murid</p>
+                                    <h5 class="font-weight-bolder mb-0">
+                                        {{ $total_siswa }}
+                                        <span class="text-success text-sm font-weight-bolder">Siswa/i</span>
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="col-4 text-end">
+                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                    <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-4 text-end">
-                            <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                <div class="card">
+                    <div class="card-body p-3">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="numbers">
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total kelas</p>
+                                    <h5 class="font-weight-bolder mb-0">
+                                        {{ $total_kelas }}
+                                        <span class="text-success text-sm font-weight-bolder">Kelas</span>
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="col-4 text-end">
+                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                    <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                <div class="card">
+                    <div class="card-body p-3">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="numbers">
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">total akun</p>
+                                    <h5 class="font-weight-bolder mb-0">
+                                        {{ $total_akun }}
+                                        <span class="text-success text-sm font-weight-bolder">Akun</span>
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="col-4 text-end">
+                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                    <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6">
+                <div class="card">
+                    <div class="card-body p-3">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="numbers">
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Timeline</p>
+                                    <h5 class="font-weight-bolder mb-0">
+                                        {{ $total_timeline->count() }}
+                                        <span class="text-success text-sm font-weight-bolder">Timeline</span>
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="col-4 text-end">
+                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                    <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-            <div class="card">
-                <div class="card-body p-3">
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="numbers">
-                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Total kelas</p>
-                                <h5 class="font-weight-bolder mb-0">
-                                    {{ $total_kelas }}
-                                    <span class="text-success text-sm font-weight-bolder">+3%</span>
-                                </h5>
-                            </div>
-                        </div>
-                        <div class="col-4 text-end">
-                            <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-            <div class="card">
-                <div class="card-body p-3">
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="numbers">
-                                <p class="text-sm mb-0 text-capitalize font-weight-bold">total akun</p>
-                                <h5 class="font-weight-bolder mb-0">
-                                    {{ $total_akun }}
-                                    <span class="text-danger text-sm font-weight-bolder">-2%</span>
-                                </h5>
-                            </div>
-                        </div>
-                        <div class="col-4 text-end">
-                            <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-sm-6">
-            <div class="card">
-                <div class="card-body p-3">
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="numbers">
-                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Sales</p>
-                                <h5 class="font-weight-bolder mb-0">
-                                    $103,430
-                                    <span class="text-success text-sm font-weight-bolder">+5%</span>
-                                </h5>
-                            </div>
-                        </div>
-                        <div class="col-4 text-end">
-                            <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    @endif
 
     <div class="row mt-4">
-        <div class="col-lg-5 mb-lg-0 mb-4">
+        {{-- <div class="col-lg-5 mb-lg-0 mb-4">
             <div class="card z-index-2">
                 <div class="card-body p-3">
                     <div class="bg-gradient-dark border-radius-lg py-3 pe-1 mb-3">
@@ -129,9 +133,9 @@
                                             </g>
                                         </svg>
                                     </div>
-                                    <p class="text-xs mt-1 mb-0 font-weight-bold">Users</p>
+                                    <p class="text-xs mt-1 mb-0 font-weight-bold">Pengguna</p>
                                 </div>
-                                <h4 class="font-weight-bolder">36K</h4>
+                                <h4 class="font-weight-bolder">{{ $total_akun }}</h4>
                                 <div class="progress w-75">
                                     <div class="progress-bar bg-dark w-60" role="progressbar" aria-valuenow="60"
                                         aria-valuemin="0" aria-valuemax="100"></div>
@@ -167,9 +171,9 @@
                                             </g>
                                         </svg>
                                     </div>
-                                    <p class="text-xs mt-1 mb-0 font-weight-bold">Clicks</p>
+                                    <p class="text-xs mt-1 mb-0 font-weight-bold">Total Kelas</p>
                                 </div>
-                                <h4 class="font-weight-bolder">2m</h4>
+                                <h4 class="font-weight-bolder">{{ $total_kelas }}</h4>
                                 <div class="progress w-75">
                                     <div class="progress-bar bg-dark w-90" role="progressbar" aria-valuenow="90"
                                         aria-valuemin="0" aria-valuemax="100"></div>
@@ -199,9 +203,9 @@
                                             </g>
                                         </svg>
                                     </div>
-                                    <p class="text-xs mt-1 mb-0 font-weight-bold">Sales</p>
+                                    <p class="text-xs mt-1 mb-0 font-weight-bold">Total Siswa</p>
                                 </div>
-                                <h4 class="font-weight-bolder">435$</h4>
+                                <h4 class="font-weight-bolder">{{ $total_siswa }}</h4>
                                 <div class="progress w-75">
                                     <div class="progress-bar bg-dark w-30" role="progressbar" aria-valuenow="30"
                                         aria-valuemin="0" aria-valuemax="100"></div>
@@ -234,9 +238,9 @@
                                             </g>
                                         </svg>
                                     </div>
-                                    <p class="text-xs mt-1 mb-0 font-weight-bold">Items</p>
+                                    <p class="text-xs mt-1 mb-0 font-weight-bold">Total Mapel</p>
                                 </div>
-                                <h4 class="font-weight-bolder">43</h4>
+                                <h4 class="font-weight-bolder">{{ $total_mapel -> where('role', 'guru')->count() }}</h4>
                                 <div class="progress w-75">
                                     <div class="progress-bar bg-dark w-50" role="progressbar" aria-valuenow="50"
                                         aria-valuemin="0" aria-valuemax="100"></div>
@@ -246,72 +250,43 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-7 col-md-6">
+        </div> --}}
+        <div class="col col">
             <div class="card h-100">
                 <div class="card-header pb-0">
-                    <h6>Orders overview</h6>
-                    <p class="text-sm">
-                        <i class="fa fa-arrow-up text-success" aria-hidden="true"></i>
-                        <span class="font-weight-bold">24%</span> this month
-                    </p>
+                    @php
+                        use Carbon\Carbon;
+                    @endphp
+                    <div class="row mx-1">
+                        <div class="col">
+                            <h6>Riwayat Timeline {{ Carbon::now()->locale('id')->isoFormat('D MMMM Y') }}</h6>
+                        </div>
+                        <div class="col">
+                            <a href="{{ url('history-timeline') }}" class="float-end text-capitalize text-decoration-underline">Lihat semua</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body p-3">
                     <div class="timeline timeline-one-side">
-                        <div class="timeline-block mb-3">
-                            <span class="timeline-step">
-                                <i class="ni ni-bell-55 text-success text-gradient"></i>
-                            </span>
-                            <div class="timeline-content">
-                                <h6 class="text-dark text-sm font-weight-bold mb-0">$2400, Design changes</h6>
-                                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">22 DEC 7:20 PM</p>
-                            </div>
-                        </div>
-                        <div class="timeline-block mb-3">
-                            <span class="timeline-step">
-                                <i class="ni ni-html5 text-danger text-gradient"></i>
-                            </span>
-                            <div class="timeline-content">
-                                <h6 class="text-dark text-sm font-weight-bold mb-0">New order #1832412</h6>
-                                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">21 DEC 11 PM</p>
-                            </div>
-                        </div>
-                        <div class="timeline-block mb-3">
-                            <span class="timeline-step">
-                                <i class="ni ni-cart text-info text-gradient"></i>
-                            </span>
-                            <div class="timeline-content">
-                                <h6 class="text-dark text-sm font-weight-bold mb-0">Server payments for April</h6>
-                                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">21 DEC 9:34 PM</p>
-                            </div>
-                        </div>
-                        <div class="timeline-block mb-3">
-                            <span class="timeline-step">
-                                <i class="ni ni-credit-card text-warning text-gradient"></i>
-                            </span>
-                            <div class="timeline-content">
-                                <h6 class="text-dark text-sm font-weight-bold mb-0">New card added for order #4395133</h6>
-                                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">20 DEC 2:20 AM</p>
-                            </div>
-                        </div>
-                        <div class="timeline-block mb-3">
-                            <span class="timeline-step">
-                                <i class="ni ni-key-25 text-primary text-gradient"></i>
-                            </span>
-                            <div class="timeline-content">
-                                <h6 class="text-dark text-sm font-weight-bold mb-0">Unlock packages for development</h6>
-                                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">18 DEC 4:54 AM</p>
-                            </div>
-                        </div>
-                        <div class="timeline-block">
-                            <span class="timeline-step">
-                                <i class="ni ni-money-coins text-dark text-gradient"></i>
-                            </span>
-                            <div class="timeline-content">
-                                <h6 class="text-dark text-sm font-weight-bold mb-0">New order #9583120</h6>
-                                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">17 DEC</p>
-                            </div>
-                        </div>
+                        @if ($recent_timeline->count() < 1)
+                            <h4 class="mx-5">@if(!Str::contains(Auth::user()->role, 'admin'))Kamu belum membuat jurnal hari ini.@else Belum ada jurnal. @endif</h4>
+                        @else
+                            @foreach ($recent_timeline as $timeline)
+                                <div class="timeline-block mb-3">
+                                    <span class="timeline-step">
+                                        <i class="ni ni-bell-55 text-success text-gradient"></i>
+                                    </span>
+                                    <div class="timeline-content">
+                                        <h6 class="text-dark text-sm font-weight-bold mb-0">Kelas {{ $timeline->kelas }}
+                                            {{ $timeline->kompetensi_keahlian }}, {{ $timeline->mapel }}</h6>
+                                        <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">
+                                            {{ $timeline->nama_guru }}</p>
+                                        <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">
+                                            {{ $timeline->created_at->diffForHumans() }}</p>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             </div>

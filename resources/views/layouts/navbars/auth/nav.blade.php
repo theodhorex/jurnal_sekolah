@@ -13,9 +13,10 @@
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4 d-flex justify-content-end" id="navbar">
             <ul class="navbar-nav  justify-content-end">
                 <li class="nav-item d-flex align-items-center">
-                    <a href="{{ url('/logout')}}" class="nav-link text-body font-weight-bold px-0">
-                        <i class="fa fa-user me-sm-1"></i>
-                        <span class="d-sm-inline d-none">Keluar</span>
+                    <a class="nav-link text-body font-weight-bold px-4">{{ Auth::user()->name }}</a>
+                    <a id="logout-button" class="nav-link text-body font-weight-bold px-0">
+                        <i class="fa fa-user me-sm-1 cursor-pointer"></i>
+                        <span class="d-sm-inline d-none cursor-pointer">Keluar</span>
                     </a>
                 </li>
                 <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -119,4 +120,15 @@
         </div>
     </div>
 </nav>
+
+
+<script src="{{ asset('jquery/jquery-3.6.3.min.js') }}"></script>
+<script>
+    $('#logout-button').click(function(){
+        let cond = confirm('Yakin ingin keluar?');
+        if(cond){
+            window.location.href = "{{ url('/logout') }}";
+        }
+    });
+</script>
 <!-- End Navbar -->

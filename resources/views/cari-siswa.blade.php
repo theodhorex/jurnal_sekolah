@@ -1,14 +1,30 @@
 @extends('layouts.user_type.auth')
 
 @section('content')
+<head>
+    <style>
+        .wrapper{
+            overflow-y: hidden;
+            overflow-x: auto;
+        }
+        .wrapper::-webkit-scrollbar{
+            display: none;
+        }
+    </style>
+</head>
     <div class="row mx-3">
-        <h2 class="mb-3">Cari nama siswa disini</h2>
+        <div class="col">
+            <h2 class="mb-3">Cari nama siswa atau guru disini</h2>
+        </div>
         <input type="search" name="cari_nama_siswa" id="cari_nama_siswa" class="form-control"
-            placeholder="Cari nama siswa disini..">
+            placeholder="Cari nama siswa atau guru disini..">
     </div>
-    <div id="search-target" class="mx-3 mt-4"></div>
-
-
+    
+    <div class="wrapper">
+        <div id="search-target" class="mx-3 mt-4">
+            {{-- <h1>lollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollol</h1> --}}
+        </div>
+    </div>
 
     <!--  Jquery  -->
     <script src="{{ asset('jquery/jquery-3.6.3.min.js') }}"></script>
@@ -29,7 +45,7 @@
                                 <table style="border: 1px solid black;" class="table">
                                     <thead style="border: 1px solid black;">
                                         <tr style="border: 1px solid black; color: black;">
-                                            <th style="border: 1px solid black;" class="text-center">Aksi</th>
+                                            {{-- <th style="border: 1px solid black;" class="text-center">Aksi</th> --}}
                                             <th style="border: 1px solid black;" class="text-center">Tanggal</th>
                                             <th style="border: 1px solid black;">Nama Guru</th>
                                             <th class="text-center" style="border: 1px solid black;">Mapel</th>
@@ -41,13 +57,13 @@
                                             <th style="border: 1px solid black;">Evaluasi perkembangan KBM</th>
                                             <th style="border: 1px solid black;">Nama murid yang bersangkutan</th>
                                             <th style="border: 1px solid black;">Laporan perkembangan siswa</th>
-                                            <th style="border: 1px solid black;">Keterangan</th>
+                                            {{-- <th style="border: 1px solid black;">Keterangan</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody style="border: 1px solid black;">
                                         <tr style="border: 1px solid black; color: black;">
-                                            <td style="border: 1px solid black;"><a href="#" class="btn btn-primary"><i
-                                                        class="fa fa-edit"></i></a></td>
+                                            {{-- <td style="border: 1px solid black;"><a href="#" class="btn btn-primary"><i --}}
+                                            {{--             class="fa fa-edit"></i></a></td> --}}
                                             <td style="border: 1px solid black;" class="text-center">
                                                 ${e['tanggal']}</td>
                                             <td style="border: 1px solid black;">${e['nama_guru']}</td>
@@ -74,7 +90,7 @@
                                             <td style="border: 1px solid black;">
                                                 ${e['laporan_perkembangan_siswa']}
                                             </td>
-                                            <td style="border: 1px solid black;"></td>
+                                            {{-- <td style="border: 1px solid black;"></td> --}}
 
                                         </tr>
                                     </tbody>

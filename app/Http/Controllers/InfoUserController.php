@@ -8,12 +8,16 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\View;
 
+use Avatar;
+
 class InfoUserController extends Controller
 {
 
     public function create()
     {
-        return view('laravel-examples/user-profile');
+        $avatar = Avatar::create(Auth::user()->name)->toBase64();
+        return view('laravel-examples/user-profile', compact('avatar'));
+        // dd(Avatar::create('Joko Widodo')->toSvg());
     }
 
     public function store(Request $request)
@@ -31,7 +35,6 @@ class InfoUserController extends Controller
             if(env('IS_DEMO') && Auth::user()->id == 1)
             {
                 return redirect()->back()->withErrors(['msg2' => 'You are in a demo version, you can\'t change the email address.']);
-                
             }
             
         }
@@ -52,6 +55,6 @@ class InfoUserController extends Controller
         ]);
 
 
-        return redirect('/user-profile')->with('success','Profile updated successfully');
+        return redirect('/user-profile')->with('success','Profile berhasil diupdate!');
     }
 }

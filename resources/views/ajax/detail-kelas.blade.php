@@ -27,7 +27,8 @@
     </div>
     <span class="mb-1">Tahun ajaran : {{ $kelas->tahun_ajaran }}</span>
     <br>
-    <span>Jumlah siswa/i : <b>{{ $kelas->jumlah_siswa }}</b></span>
+    <span>Jumlah siswa/i :
+        <b>{{ $siswa->where('kelas', $kelas->kelas)->where('jurusan', $kelas->jurusan)->count() }}</b></span>
     @if (Auth::user()->role == 'admin')
         <div class="row mt-4 mb-2">
             <div class="col-6">
@@ -49,7 +50,7 @@
                 @php
                     $i = 1;
                 @endphp
-                @foreach ($guru as $guruu)
+                @foreach ($collection as $guruu)
                     <tr>
                         <td class="fit text-center">{{ $i++ }}</td>
                         <td>{{ $guruu }}</td>
@@ -59,6 +60,10 @@
         </table>
     @endif
     <hr>
+
+    @if($timeline_kelas -> count() < 1)
+    <h5 class="mb-3">Belum ada timeline kelas.</h5>
+    @else
     <div class="row">
         <div class="col-6">
             <h5>Timeline kelas</h5>
@@ -69,25 +74,36 @@
                 timeline</a>
         </div>
     </div>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Nama</th>
-                <th class="fit">Mapel</th>
-                <th class="fit text-center">Waktu</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($timeline_kelas as $jurnal)
-            <tr>
-                <td class="px-4">{{ $jurnal -> nama_guru }}</td>
-                <td class="fit text-center">{{ $jurnal -> mapel }}</td>
-                <td class="fit text-center">{{ $jurnal -> created_at -> diffForHumans() }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-    <a href="form-jurnal/{{ $kelas->id }}" class="btn btn-primary">+ Tambah jurnal</a>
+    <div class="wrapper" style="overflow-x: scroll;">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="fit">Nama</th>
+                    <th class="fit text-center">Mapel</th>
+                    <th class="fit text-center">Waktu</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($timeline_kelas as $jurnal)
+                    <tr>
+                        <td class="fit px-4">{{ $jurnal->nama_guru }}</td>
+                        <td class="fit text-center text-truncate">{{ Str::limit($jurnal->mapel, 20) }}</td>
+                        <td class="fit text-center">{{ $jurnal->created_at->diffForHumans() }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+    @endif
+
+    @if (Auth::user()->role == 'visitor')
+    @elseif(Auth::user()->role == 'admin')
+    @else
+        @if (!str_contains($kelas->guru_pengampu, Auth::user()->name) === false)
+            <a href="form-jurnal/{{ $kelas->id }}" class="btn btn-primary">+ Tambah jurnal</a>
+        @else
+        @endif
+    @endif
 </div>
 
 <script>
@@ -95,26 +111,41 @@
         $('#detail-kelas-container').html(`
         <div class="form-group mb-2">
             <label class="form-label">Kelas</label>
-            <input id="kelas" name="kelas" type="text" value="{{ $kelas->kelas }}" class="form-control mb-2">
+            <input id="kelasss" name="kelas" type="text" value="{{ $kelas->kelas }}" class="form-control mb-2">
         </div>
         <div class="form-group mb-2">
             <label class="form-label">Jurusan</label>
-            <input id="jurusan" name="jurusan" type="text" value="{{ $kelas->jurusan }}" class="form-control mb-2">
+            <input id="jurusanss" name="jurusan" type="text" value="{{ $kelas->jurusan }}" class="form-control mb-2">
         </div>
         <div class="form-group mb-2">
             <label class="form-label">Tahun ajaran</label>
-            <input id="tahun_ajaran" name="tahun_ajaran" type="text" value="{{ $kelas->tahun_ajaran }}" class="form-control mb-2">
+            <input id="tahun_ajaranss" name="tahun_ajaran" type="text" value="{{ $kelas->tahun_ajaran }}" class="form-control mb-2">
         </div>
         <div class="form-group mb-2">
             <label class="form-label">Jumlah siswa</label>
-            <input id="jumlah_siswa" name="jumlah_siswa" type="number" value="{{ $kelas->jumlah_siswa }}" class="form-control mb-2">
+            <input id="jumlah_siswass" name="jumlah_siswa" type="number" value="{{ $kelas->jumlah_siswa }}" class="form-control mb-2">
         </div>
     `);
 
-        $('#modal-footer-detail-kelas').append('<button type="button" class="btn btn-primary">Simpan</button>');
+        $('#modal-footer-detail-kelas').append('<button type="button" onClick="updateDetailKelas({{ $kelas->id }})" class="btn btn-primary">Simpan</button>');
     }
 
     function updateDetailKelas(id) {
-
+        $.ajax({
+            type: "GET",
+            url: "{{ url('update-kelas', $kelas -> id) }}",
+            data: {
+                kelas: $('#kelasss').val(),
+                jurusan: $('#jurusanss').val(),
+                tahun_ajaran: $('#tahun_ajaranss').val(),
+                jumlah_siswa: $('#jumlah_siswass').val()
+            },
+            success: function(data){
+                location.reload();
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
     }
 </script>

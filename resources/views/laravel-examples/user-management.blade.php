@@ -13,12 +13,23 @@
                             <option value="guru">Guru</option>
                             <option value="visitor">Visitor</option>
                             <option value="admin">Admin</option>
+                            <option value="k3">K3</option>
                         </select>
                     </div>
                     <div class="col-md-3">
                         <label for="cari_nama" class="form-label">Nama</label>
                         <input type="text" name="cari_nama" id="cari_nama" class="form-control"
                             placeholder="Cari nama pengguna">
+                    </div>
+                    <div class="col">
+                        <div class="float-end">
+                            @if(Str::contains(Auth::user()->role, 'admin'))
+                            <label class="form-label"></label>
+                            <br>
+                            <a class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3">Import
+                                Akun Guru</a>
+                            @endif
+                        </div>
                     </div>
                 </div>
                 <div class="card mb-4 mx-4">
@@ -27,85 +38,14 @@
                             <div>
                                 <h5 class="mb-0">List semua akun</h5>
                             </div>
-                            <a class="btn bg-gradient-primary btn-sm mb-0" type="button" data-bs-toggle="modal"
+                            @if(Str::contains(Auth::user()->role, 'admin'))
+                            <a class="btn btn-sm bg-gradient-primary btn-sm mb-0" type="button" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">+&nbsp; Akun Baru</a>
+                            @endif
                         </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
-                        <div class="table-responsive p-0">
-                            <table class="table align-items-center mb-0">
-                                <thead>
-                                    <tr>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            ID
-                                        </th>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Foto
-                                        </th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Nama
-                                        </th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Email
-                                        </th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            role
-                                        </th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Dibuat
-                                        </th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Aksi
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody id="target_result">
-                                    @php
-                                        $i = 1;
-                                    @endphp
-                                    @foreach ($get_user as $user)
-                                        <tr id="tabel_user">
-                                            <td class="ps-4">
-                                                <p class="text-xs font-weight-bold mb-0">{{ $i++ }}</p>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3">
-                                                </div>
-                                            </td>
-                                            <td class="text-center">
-                                                <p class="text-xs font-weight-bold mb-0 text-capitalize">{{ $user->name }}
-                                                </p>
-                                            </td>
-                                            <td class="text-center">
-                                                <p class="text-xs font-weight-bold mb-0">{{ $user->email }}</p>
-                                            </td>
-                                            <td class="text-center">
-                                                <p class="text-xs font-weight-bold mb-0">{{ $user->role }}</p>
-                                            </td>
-                                            <td class="text-center">
-                                                <span
-                                                    class="text-secondary text-xs font-weight-bold">{{ $user->created_at->diffForHumans() }}</span>
-                                            </td>
-                                            <td class="text-center">
-                                                <a onClick="editAkun({{ $user->id }})" class="mx-3"
-                                                    data-bs-toggle="tooltip" data-bs-original-title="Edit user">
-                                                    <i class="fas fa-user-edit text-secondary"></i>
-                                                </a>
-                                                <span onClick="hapusAkun({{ $user->id }})">
-                                                    <i class="cursor-pointer fas fa-trash text-secondary"></i>
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                        <div class="table-responsive p-0 imported-list-akun">
 
                         </div>
                     </div>
@@ -181,6 +121,30 @@
         </div>
     </div>
 
+    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel3">Import Akun Guru</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{ url('import-data-guru') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group mb-3">
+                            <label for="input_data_guru" class="form-label">Pilih file data guru</label>
+                            <input type="file" name="file" id="file" class="form-control">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary">Import</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!--  Jquery  -->
     <script src="{{ asset('jquery/jquery-3.6.3.min.js') }}"></script>
     <script>
@@ -188,7 +152,7 @@
             $('#filter_role').change(function() {
                 $.ajax({
                     type: "GET",
-                    url: '{{ url('user-management') }}',
+                    url: '{{ url('user-management/ajax') }}',
                     data: {
                         role_result: $(this).val(),
                         status: true
@@ -204,7 +168,7 @@
                                             </td>
                                             <td>
                                                 <div>
-                                                    <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3">
+                                                    <img src="" alt="No Image" class="avatar avatar-sm me-3">
                                                 </div>
                                             </td>
                                             <td class="text-center">
@@ -244,11 +208,11 @@
             $('#cari_nama').keyup(function() {
                 $.ajax({
                     type: "GET",
-                    url: '{{ url('user-management') }}',
+                    url: '{{ url('user-management/ajax') }}',
                     data: {
                         result: $(this).val(),
                         search: true
-                    },
+                    },  
                     dataType: 'JSON',
                     success: function(data) {
                         let number = 1;
@@ -296,7 +260,15 @@
                     }
                 });
             });
+
+            listAkun();
         });
+
+        function listAkun(){
+            $.get("{{ url('user-management/ajax') }}/", {}, function(data) {
+                $(".imported-list-akun").html(data);
+            });
+        }
 
         function tambahAkun() {
             $.ajax({
@@ -311,6 +283,7 @@
                 },
                 success: function(data) {
                     $('.btn-close').click();
+                    listAkun();
                     console.log('berhasil!');
                 },
                 error: function(err) {
@@ -334,9 +307,11 @@
                     nama_akun: $('#nama_akuns').val(),
                     email: $('#emails').val(),
                     role: $('#roles').val(),
+                    mapel: $('#mapels').val(),
                 },
                 success: function(data) {
                     $('.btn-close').click();
+                    listAkun();
                     console.log('berhasil update!');
                 },
                 error: function(err) {
@@ -356,6 +331,7 @@
                         role: $('#roles').val(),
                     },
                     success: function(data) {
+                        listAkun();
                         console.log('Berhasil dihapus!');
                     }
                 });

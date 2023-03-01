@@ -9,11 +9,11 @@
         <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
             data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
             aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon mt-2">
+            {{-- <span class="navbar-toggler-icon mt-2">
                 <span class="navbar-toggler-bar bar1"></span>
                 <span class="navbar-toggler-bar bar2"></span>
                 <span class="navbar-toggler-bar bar3"></span>
-            </span>
+            </span> --}}
         </button>
         <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav mx-auto">

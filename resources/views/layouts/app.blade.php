@@ -36,7 +36,7 @@
 
 <body
     class="g-sidenav-show  bg-gray-100 {{ (\Request::is('rtl') ? 'rtl' : (Request::is('virtual-reality') ? 'virtual-reality' : '')) }} "
-    style="overflow: hidden;">
+    style="overflow: hidden; overflow-y: scroll;">
     @auth
     @yield('auth')
     @endauth
@@ -45,6 +45,11 @@
     @endguest
 
     @if(session()->has('success'))
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <div x-data="{ show: true}" x-init="setTimeout(() => show = false, 4000)" x-show="show"
         class="position-fixed bg-success rounded right-3 text-sm py-2 px-4">
         <p class="m-0">{{ session('success')}}</p>
