@@ -7,16 +7,27 @@
                 <div class="col">
                     {{-- <a href="{{ url('export-pdf', $kelas->id) }}" class="btn bg-gradient-primary">Export PDF</a> --}}
                     {{-- <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn bg-gradient-primary">Export PDF</a> --}}
-                    @if(Str::contains($kelas -> guru_pengampu, Auth::user()->name))
+                    {{-- @if (Str::contains($kelas->guru_pengampu, Auth::user()->name)) --}}
                     <a href="{{ url('export-pdf', $kelas->id) }}" class="btn bg-gradient-primary">Export PDF</a>
-                    @endif
+                    {{-- @endif --}}
                 </div>
+            </div>
+            <div class="row">
+                @if (session('success'))
+                    <div class="m-3  alert alert-success alert-dismissible fade show" id="alert-success" role="alert">
+                        <span class="alert-text text-white">
+                            {{ session('success') }}</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            <i class="fa fa-close" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                @endif
             </div>
             <h2 class="mb-3"><i class="fa fa-arrow-left me-3 cursor-pointer" onClick="history.back()"></i> Timeline kelas
                 {{ $kelas->kelas }} {{ $kelas->jurusan }}
             </h2>
             @foreach ($jurnal_kelas->groupBy(function ($item) {
-            return Carbon\Carbon::parse($item->tanggal)->isoFormat('MMMM');
+            return Carbon\Carbon::parse($item->tanggal_pengajaran)->isoFormat('MMMM');
         }) as $month => $groupedItems)
                 <div class="accordion bg-gradient-primary rounded my-2" id="accordionExample">
                     <div class="accordion-item">
@@ -24,14 +35,11 @@
                             <div class="row">
                                 <div class="col d-flex">
                                     <button class="accordion-button text-light font-weight-bold my-auto" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#{{$month}}" aria-expanded="true"
+                                        data-bs-toggle="collapse" data-bs-target="#{{ $month }}" aria-expanded="true"
                                         aria-controls="collapseOne">
                                         {{ $month }}
                                     </button>
                                 </div>
-                                {{-- <div class="col ">
-                                    <a href="" class="btn btn-warning btn-sm float-end m-3">Export PDF</a>
-                                </div> --}}
                             </div>
                         </h2>
                         <div style="width: 100%; overflow-x: scroll;" id="{{ $month }}"
@@ -60,17 +68,18 @@
                                         @foreach ($groupedItems as $jurnal)
                                             <tr style="border: 1px solid white; color: white;">
                                                 <td style="border: 1px solid white;">
-                                                    @if($jurnal -> nama_guru == Auth::user()->name)
-                                                    <a href="{{ url('edit-timeline', $jurnal->id) }}"
-                                                        class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                                    @if ($jurnal->nama_guru == Auth::user()->name)
+                                                        <a href="{{ url('edit-timeline', $jurnal->id) }}"
+                                                            class="btn btn-primary"><i class="fa fa-edit"></i></a>
                                                         <br>
-                                                    <a class="btn btn-primary" href="{{ url('hapus-timeline', $jurnal->id) }}">
-                                                        <i class="fa fa-trash"></i>
-                                                    </a>
+                                                        <a class="btn btn-primary" id="button_hapus_timeline"
+                                                            onClick="hapusTimeline({{ $jurnal->id }})">
+                                                            <i class="fa fa-trash"></i>
+                                                        </a>
                                                     @endif
                                                 </td>
                                                 <td style="border: 1px solid white;" class="text-center">
-                                                    {{ date('d-m-Y', strtotime($jurnal->tanggal)) }}</td>
+                                                    {{ date('d-m-Y', strtotime($jurnal->tanggal_pengajaran)) }}</td>
                                                 <td style="border: 1px solid white;">{{ $jurnal->nama_guru }}</td>
                                                 <td style="border: 1px solid white;">{{ $jurnal->mapel }}</td>
                                                 <td style="border: 1px solid white;" class="text-center">
@@ -97,11 +106,13 @@
                                                 </td>
                                                 <td style="border: 1px solid white;">
                                                     @php
-                                                    $link = explode(',', $jurnal->lampiran);
+                                                        $link = explode(',', $jurnal->lampiran);
                                                     @endphp
                                                     <ul class="text-center mx-auto">
-                                                        @foreach($link as $l)
-                                                        <li style="list-style: none;"><a href="{{$l}}" target="blank" class="text-light">{{$l}}</a></li>
+                                                        @foreach ($link as $l)
+                                                            <li style="list-style: none;"><a href="{{ $l }}"
+                                                                    target="blank"
+                                                                    class="text-light">{{ $l }}</a></li>
                                                         @endforeach
                                                     </ul>
                                                 </td>
@@ -136,5 +147,25 @@
     @endsection
     <script src="{{ asset('jquery/jquery-3.6.3.min.js') }}"></script>
     <script>
-
+        function hapusTimeline(id) {
+            Swal.fire({
+                title: 'Anda yakin ingin menghapus timeline ini?',
+                text: "Timeline akan dihapus dari database!",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "{{ url('hapus-timeline') }}/" + id;
+                    Swal.fire(
+                        'Berhasil dihapus!',
+                        'Timeline berhasil dihapus!.',
+                        'success'
+                    )
+                }
+            })
+        }
     </script>

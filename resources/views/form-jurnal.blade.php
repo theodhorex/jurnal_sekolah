@@ -23,6 +23,12 @@
                         <input type="time" name="waktu_selesai" id="waktu_selesai" class="form-control">
                     </div>
                 </div>
+                <div class="col">
+                    <div class="form-group mb-3">
+                        <label for="tanggal_pengajaran" class="form-label">Tanggal pengajaran</label>
+                        <input type="date" name="tanggal_pengajaran" id="tanggal_pengajaran" class="form-control">
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col">

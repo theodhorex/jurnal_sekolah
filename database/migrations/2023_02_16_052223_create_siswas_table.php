@@ -20,6 +20,7 @@ class CreateSiswasTable extends Migration
             $table->string('jk')->nullable();
             $table->string('kelas')->nullable();
             $table->string('jurusan')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

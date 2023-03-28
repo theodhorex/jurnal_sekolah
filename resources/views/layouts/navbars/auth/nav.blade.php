@@ -124,11 +124,20 @@
 
 <script src="{{ asset('jquery/jquery-3.6.3.min.js') }}"></script>
 <script>
-    $('#logout-button').click(function(){
-        let cond = confirm('Yakin ingin keluar?');
-        if(cond){
-            window.location.href = "{{ url('/logout') }}";
-        }
+    $('#logout-button').click(function() {
+        Swal.fire({
+            title: 'Yakin ingin keluar?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#cb0c9f',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'Tidak'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "{{ url('/logout') }}";
+            }
+        })
     });
 </script>
 <!-- End Navbar -->

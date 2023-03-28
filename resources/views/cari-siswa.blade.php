@@ -21,7 +21,7 @@
     </div>
     
     <div class="wrapper">
-        <div id="search-target" class="mx-3 mt-4">
+        <div id="search-target" class="mx-3 mt-4" style="overflow-x: auto;">
             {{-- <h1>lollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollollol</h1> --}}
         </div>
     </div>
@@ -65,7 +65,7 @@
                                             {{-- <td style="border: 1px solid black;"><a href="#" class="btn btn-primary"><i --}}
                                             {{--             class="fa fa-edit"></i></a></td> --}}
                                             <td style="border: 1px solid black;" class="text-center">
-                                                ${e['tanggal']}</td>
+                                                ${e['tanggal_pengajaran']}</td>
                                             <td style="border: 1px solid black;">${e['nama_guru']}</td>
                                             <td style="border: 1px solid black;">${e['mapel']}</td>
                                             <td style="border: 1px solid black;" class="text-center">

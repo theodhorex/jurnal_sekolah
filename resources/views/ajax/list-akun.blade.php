@@ -53,7 +53,7 @@
                         class="text-secondary text-xs font-weight-bold">{{ $user->created_at->diffForHumans() }}</span>
                 </td>
                 <td class="text-center">
-                    <a onClick="editAkun({{ $user->id }})" class="mx-3" data-bs-toggle="tooltip"
+                    <a onClick="editAkun({{ $user->id }})" class="mx-3 cursor-pointer" data-bs-toggle="tooltip"
                         data-bs-original-title="Edit user">
                         <i class="fas fa-user-edit text-secondary"></i>
                     </a>

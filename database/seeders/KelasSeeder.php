@@ -23,7 +23,8 @@ class KelasSeeder extends Seeder
                 'jumlah_siswa' => '30',
                 'guru_pengampu' => 'Guru 1',
                 'angkatan' => '10',
-                'tahun_ajaran' => '2019/2023'
+                'tahun_ajaran' => '2019/2023',
+                'status' => 'aktif'
             ],
             [
                 'kelas' => 'X',
@@ -31,7 +32,8 @@ class KelasSeeder extends Seeder
                 'jumlah_siswa' => '30',
                 'guru_pengampu' => 'Guru 2',
                 'angkatan' => '10',
-                'tahun_ajaran' => '2019/2023'
+                'tahun_ajaran' => '2019/2023',
+                'status' => 'aktif'
             ],
             [
                 'kelas' => 'X',
@@ -39,7 +41,8 @@ class KelasSeeder extends Seeder
                 'jumlah_siswa' => '30',
                 'guru_pengampu' => 'Guru 2',
                 'angkatan' => '10',
-                'tahun_ajaran' => '2019/2023'
+                'tahun_ajaran' => '2019/2023',
+                'status' => 'aktif'
             ],
             [
                 'kelas' => 'X',
@@ -47,7 +50,8 @@ class KelasSeeder extends Seeder
                 'jumlah_siswa' => '30',
                 'guru_pengampu' => 'Guru 3',
                 'angkatan' => '10',
-                'tahun_ajaran' => '2019/2023'
+                'tahun_ajaran' => '2019/2023',
+                'status' => 'aktif'
             ],
             [
                 'kelas' => 'X',
@@ -55,7 +59,8 @@ class KelasSeeder extends Seeder
                 'jumlah_siswa' => '30',
                 'guru_pengampu' => 'Guru 4',
                 'angkatan' => '10',
-                'tahun_ajaran' => '2019/2023'
+                'tahun_ajaran' => '2019/2023',
+                'status' => 'aktif'
             ],
             [
                 'kelas' => 'X',
@@ -63,7 +68,8 @@ class KelasSeeder extends Seeder
                 'jumlah_siswa' => '30',
                 'guru_pengampu' => 'Guru 5',
                 'angkatan' => '10',
-                'tahun_ajaran' => '2019/2023'
+                'tahun_ajaran' => '2019/2023',
+                'status' => 'aktif'
             ],
             
             [
@@ -72,7 +78,8 @@ class KelasSeeder extends Seeder
                 'jumlah_siswa' => '30',
                 'guru_pengampu' => 'Guru 1',
                 'angkatan' => '10',
-                'tahun_ajaran' => '2019/2023'
+                'tahun_ajaran' => '2019/2023',
+                'status' => 'aktif'
             ],
             [
                 'kelas' => 'XI',
@@ -80,7 +87,8 @@ class KelasSeeder extends Seeder
                 'jumlah_siswa' => '30',
                 'guru_pengampu' => 'Guru 2',
                 'angkatan' => '10',
-                'tahun_ajaran' => '2019/2023'
+                'tahun_ajaran' => '2019/2023',
+                'status' => 'aktif'
             ],
             [
                 'kelas' => 'XI',
@@ -88,7 +96,8 @@ class KelasSeeder extends Seeder
                 'jumlah_siswa' => '30',
                 'guru_pengampu' => 'Guru 3',
                 'angkatan' => '10',
-                'tahun_ajaran' => '2019/2023'
+                'tahun_ajaran' => '2019/2023',
+                'status' => 'aktif'
             ],
             [
                 'kelas' => 'XI',
@@ -96,7 +105,8 @@ class KelasSeeder extends Seeder
                 'jumlah_siswa' => '30',
                 'guru_pengampu' => 'Guru 4',
                 'angkatan' => '10',
-                'tahun_ajaran' => '2019/2023'
+                'tahun_ajaran' => '2019/2023',
+                'status' => 'aktif'
             ],
             [
                 'kelas' => 'XI',
@@ -104,7 +114,8 @@ class KelasSeeder extends Seeder
                 'jumlah_siswa' => '30',
                 'guru_pengampu' => 'Guru 5',
                 'angkatan' => '10',
-                'tahun_ajaran' => '2019/2023'
+                'tahun_ajaran' => '2019/2023',
+                'status' => 'aktif'
             ],
             
             [
@@ -113,7 +124,8 @@ class KelasSeeder extends Seeder
                 'jumlah_siswa' => '30',
                 'guru_pengampu' => 'Guru 1',
                 'angkatan' => '10',
-                'tahun_ajaran' => '2019/2023'
+                'tahun_ajaran' => '2019/2023',
+                'status' => 'aktif'
             ],
             [
                 'kelas' => 'XII',
@@ -121,7 +133,8 @@ class KelasSeeder extends Seeder
                 'jumlah_siswa' => '30',
                 'guru_pengampu' => 'Guru 2',
                 'angkatan' => '10',
-                'tahun_ajaran' => '2019/2023'
+                'tahun_ajaran' => '2019/2023',
+                'status' => 'aktif'
             ],
             [
                 'kelas' => 'XII',
@@ -129,7 +142,8 @@ class KelasSeeder extends Seeder
                 'jumlah_siswa' => '30',
                 'guru_pengampu' => 'Guru 3',
                 'angkatan' => '10',
-                'tahun_ajaran' => '2019/2023'
+                'tahun_ajaran' => '2019/2023',
+                'status' => 'aktif'
             ],
             [
                 'kelas' => 'XII',
@@ -137,7 +151,8 @@ class KelasSeeder extends Seeder
                 'jumlah_siswa' => '30',
                 'guru_pengampu' => 'Guru 4',
                 'angkatan' => '10',
-                'tahun_ajaran' => '2019/2023'
+                'tahun_ajaran' => '2019/2023',
+                'status' => 'aktif'
             ],
             [
                 'kelas' => 'XII',
@@ -145,7 +160,8 @@ class KelasSeeder extends Seeder
                 'jumlah_siswa' => '30',
                 'guru_pengampu' => 'Guru 5',
                 'angkatan' => '10',
-                'tahun_ajaran' => '2019/2023'
+                'tahun_ajaran' => '2019/2023',
+                'status' => 'aktif'
             ],
         ];
 

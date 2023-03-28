@@ -23,10 +23,12 @@ class CreateJurnalsTable extends Migration
             $table->string('mapel');
             $table->string('waktu_mulai');
             $table->string('waktu_selesai');
+            $table->string('tanggal_pengajaran');
             $table->longText('materi_yang_diajarkan');
             $table->longText('evaluasi_perkembangan_kbm');
             $table->longText('nama_siswa_yang_bersangkutan');
             $table->longText('laporan_perkembangan_siswa');
+            $table->longText('lmapiran')->nullable();
             $table->timestamps();
         });
     }

@@ -16,7 +16,6 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'id' => 1,
             'name' => 'admin',
             'email' => 'admin@softui.com',
             'role' => 'admin',

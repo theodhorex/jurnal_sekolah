@@ -9,6 +9,7 @@ use App\Http\Controllers\SessionsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
+use Laravolt\Avatar\Avatar;
 
 
 // Extend Controller
@@ -46,15 +47,23 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('user-management', [MainController::class, 'userManagement'])->name('user-management');
 	Route::get('user-management/ajax', [AjaxController::class, 'listAkun'])->name('user-management-ajax');
+	Route::get('/avatar/{name}', function ($name) {
+		$avatar = new Avatar();
+		$avatarImage = $avatar->create($name)->toBase64();
+		return ['avatar' => $avatarImage];
+	});
 	Route::get('tambah-akun', [MainController::class, 'tambahAkun'])->name('tambah-akun');
 	Route::get('edit-akun/{id}', [MainController::class, 'editAkun'])->name('edit-akun');
 	Route::get('update-akun/{id}', [MainController::class, 'updateAkun'])->name('update-akun');
 	Route::get('hapus-akun/{id}', [MainController::class, 'hapusAkun'])->name('hapus-akun');
 
 	Route::get('list-kelas', [MainController::class, 'listKelas'])->name('list-kelas');
+	Route::get('list-kelas-ajax', [AjaxController::class, 'listKelas'])->name('list-kelas-ajax');
+	Route::get('filter-status-kelas', [MainController::class, 'filterStatusKelas'])->name('filter-status-kelas');
 	Route::get('detail-kelas/{id}', [MainController::class, 'detailKelas'])->name('detail-kelas');
 	Route::get('update-kelas/{id}', [MainController::class, 'updateDetailKelas'])->name('update-detail-kelas');
 	Route::get('tambah-kelas', [MainController::class, 'tambahKelas'])->name('tambah-kelas');
+	Route::get('hapus-kelas/{id}', [MainController::class, 'hapusKelas'])->name('hapus-kelas');
 	Route::get('timeline-kelas/{id}', [MainController::class, 'timelineKelas'])->name('timeline-kelas');
 	Route::get('history-timeline', [MainController::class, 'generalTimeline'])->name('general-timeline');
 	Route::get('edit-guru-pengampu/{id}', [MainController::class, 'editGuruPengampu'])->name('edit-guru-pengampu');
@@ -68,6 +77,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('edit-timeline-send/{id}', [MainController::class, 'editTimelineSend'])->name('edit-timeline-send');
 	Route::get('hapus-timeline/{id}', [MainController::class, 'deleteTimeline'])->name('hapus-timeline');
 	Route::get('cari-siswa', [MainController::class, 'cariSiswa'])->name('cari-siswa');
+
+
+	// Kenaikan kelas
+	Route::get('kenaikan-kelas', [MainController::class, 'kenaikanKelas'])->name('kenaikan-kelas');
 
 	// Excel
 	Route::post('import-data-siswa', [MainController::class, 'importDataSiswa'])->name('import-data-siswa-excel');
@@ -118,3 +131,10 @@ Route::group(['middleware' => 'guest'], function () {
 Route::get('/login', function () {
     return view('session/login-session');
 })->name('login');
+
+
+// Test route
+Route::get('/test', [MainController::class, 'testFunction'])->name('test-function');
+
+// Kenaikan kelas
+Route::get('/kenaikan-kelas', [MainController::class, 'kenaikanKelas']);

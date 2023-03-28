@@ -36,7 +36,7 @@
                             <td class="text-center">
                                 <span>{{ $i++ }}</span>
                             </td>
-                            <td>{{ Str::limit($mapels->mapel, 25) }}</td>
+                            <td class="text-truncate" style="max-width: 300px;">{{ $mapels->mapel }}</td>
                             <td>{{ $mapels->name }}</td>
                         </tr>
                         @endforeach
@@ -64,7 +64,7 @@
                             return `
                                 <tr>
                                     <td class="fit text-center">${no++}</td>
-                                    <td>${e['mapel']}</td>
+                                    <td class="text-truncate" style="max-width: 300px;">${e['mapel']}</td>
                                     <td>${e['name']}</td>
                                 </tr>
 

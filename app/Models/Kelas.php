@@ -19,7 +19,8 @@ class Kelas extends Model
         'jumlah_siswa',
         'guru_pengampu',
         'angkatan',
-        'tahun_ajaran'
+        'tahun_ajaran',
+        'status'
     ];
 
 

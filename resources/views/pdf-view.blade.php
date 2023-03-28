@@ -6,10 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        /* @font-face {
+            font-family: 'Roboto-Regular';
+            src: url('{{ storage_path('font/Roboto-Regular.ufm') }}');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Roboto-Regular';
+        } */
+    </style>
     <title>Timeline kelas</title>
 </head>
 
 <body>
+    <h1 class="text-center mb-5">Kelas {{ $kelas->kelas }} {{ $kelas->jurusan }}</h1>
     @foreach ($data->groupBy(function ($item) {
         return Carbon\Carbon::parse($item->tanggal)->locale('id')->isoFormat('MMMM');
     }) as $month => $datas)
@@ -33,7 +46,7 @@
             <tbody>
                 @foreach ($datas as $d)
                     <tr>
-                        <td>{{ $d->tanggal }}</td>
+                        <td>{{ $d->tanggal_pengajaran }}</td>
                         <td>{{ $d->nama_guru }}</td>
                         <td>{{ $d->mapel }}</td>
                         <td class="text-center">{{ $d->kelas }}</td>

@@ -33,6 +33,7 @@
             <div class="form-group mb-3">
                 <label for="mapels" class="form-label">Mapel</label>
                 <textarea name="mapels" id="mapels" cols="30" rows="10" class="form-control">{{ $target->mapel }}</textarea>
+                <label for="" class="my-0 py-0" style="color: rgba(0, 0, 0, 0.406);">*Mapel bisa dikosongkan bila tidak memiliki mapel.</label>
             </div>
         </div>
     </div>

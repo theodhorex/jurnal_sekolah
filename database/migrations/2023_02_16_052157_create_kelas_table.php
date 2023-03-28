@@ -17,10 +17,11 @@ class CreateKelasTable extends Migration
             $table->id();
             $table->string('kelas')->nullable();
             $table->string('jurusan')->nullable();
-            $table->string('jumlah_siswa')->nullable();
             $table->longText('guru_pengampu')->nullable();
             $table->string('angkatan')->nullable();
+            $table->string('jumlah_siswa')->nullable();
             $table->string('tahun_ajaran')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
