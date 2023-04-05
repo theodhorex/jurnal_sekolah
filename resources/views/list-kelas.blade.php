@@ -90,8 +90,9 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Akun</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Kelas</h1>
+                    <button id="button_close_detail_kelas" type="button" class="border-0 bg-transparent text-secondary"
+                        data-bs-dismiss="modal" aria-label="Close" style=""><i class="fa fa-times"></i></button>
                 </div>
                 <div class="modal-body">
                     <div class="row">

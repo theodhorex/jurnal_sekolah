@@ -1,7 +1,8 @@
 <div class="modal-content">
     <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel2">Edit Akun</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button id="button_close_detail_kelas" type="button" class="border-0 bg-transparent text-secondary"
+                        data-bs-dismiss="modal" aria-label="Close" style=""><i class="fa fa-times"></i></button>
     </div>
     <div class="modal-body">
         <div class="px-3">

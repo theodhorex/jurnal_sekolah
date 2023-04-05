@@ -53,6 +53,7 @@ Route::group(['middleware' => 'auth'], function () {
 		return ['avatar' => $avatarImage];
 	});
 	Route::get('tambah-akun', [MainController::class, 'tambahAkun'])->name('tambah-akun');
+	Route::get('detail-akun/{id}', [MainController::class, 'detailAkun'])->name('detail-akun');
 	Route::get('edit-akun/{id}', [MainController::class, 'editAkun'])->name('edit-akun');
 	Route::get('update-akun/{id}', [MainController::class, 'updateAkun'])->name('update-akun');
 	Route::get('hapus-akun/{id}', [MainController::class, 'hapusAkun'])->name('hapus-akun');

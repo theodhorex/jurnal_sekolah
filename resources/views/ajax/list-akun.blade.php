@@ -53,12 +53,15 @@
                         class="text-secondary text-xs font-weight-bold">{{ $user->created_at->diffForHumans() }}</span>
                 </td>
                 <td class="text-center">
-                    <a onClick="editAkun({{ $user->id }})" class="mx-3 cursor-pointer" data-bs-toggle="tooltip"
+                    @if(Str::contains(Auth::user()->role, 'admin'))
+                    <a onClick="editAkun({{ $user->id }})" class="cursor-pointer" data-bs-toggle="tooltip"
                         data-bs-original-title="Edit user">
                         <i class="fas fa-user-edit text-secondary"></i>
                     </a>
-                    @if(Str::contains(Auth::user()->role, 'admin'))
-                    <span onClick="hapusAkun({{ $user->id }})">
+                    <span>
+                        <i onClick="detailAkun({{ $user->id }})" class="cursor-pointer fas fa-info-circle text-secondary"></i>
+                    </span>
+                    <span onClick="hapusAkun({{ $user->id }})" class="mx-1">
                         <i class="cursor-pointer fas fa-trash text-secondary"></i>
                     </span>
                     @endif

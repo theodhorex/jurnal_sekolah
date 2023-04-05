@@ -83,6 +83,11 @@ class MainController extends Controller
         $user->save();
     }
 
+    public function detailAkun($id){
+        $target = User::find($id);
+        return view('ajax/detail-akun', compact('target'));
+    }
+
     public function editAkun($id)
     {
         $target = User::find($id);
@@ -409,13 +414,7 @@ class MainController extends Controller
     // Testing function 
     public function testFunction()
     {
-        $siswa = Siswa::select('kelas', 'jurusan', DB::raw('count(*) as jumlah_siswa'))
-            ->groupBy('kelas', 'jurusan')
-            ->pluck('jumlah_siswa');
-
-        foreach ($siswa as $s) {
-            echo $s . '<br>';
-        }
+        return view('playground/pg');
     }
 
 

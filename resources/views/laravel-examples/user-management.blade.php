@@ -73,7 +73,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Akun</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button id="button_close_detail_kelas" type="button" class="border-0 bg-transparent text-secondary"
+                        data-bs-dismiss="modal" aria-label="Close" style=""><i class="fa fa-times"></i></button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group mb-3">
@@ -131,7 +132,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel3">Import Akun Guru</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button id="button_close_detail_kelas" type="button" class="border-0 bg-transparent text-secondary"
+                        data-bs-dismiss="modal" aria-label="Close" style=""><i class="fa fa-times"></i></button>
                 </div>
                 <form action="{{ url('import-data-guru') }}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -151,7 +153,27 @@
         </div>
     </div>
 
-    <!--  Jquery  -->
+
+    <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel4">Detail Akun</h1>
+                    <button id="button_close_detail_kelas" type="button" class="border-0 bg-transparent text-secondary"
+                        data-bs-dismiss="modal" aria-label="Close" style=""><i class="fa fa-times"></i></button>
+                </div>
+                <div class="modal-body">
+                    <div id="imported-pagess"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  Jquery & Initial JS  -->
+    <script src="{{ asset('initial/initial.js') }}"></script>
     <script src="{{ asset('jquery/jquery-3.6.3.min.js') }}"></script>
     <script>
         $(document).ready(function() {
@@ -165,19 +187,10 @@
                     },
                     dataType: 'JSON',
                     success: function(data) {
-                        // $.ajax({
-                        //     url: '/avatar/' + 'bodat',
-                        //     success: function(res) {
-                        //         $('#target_result').html(
-                        //             `
-                        //                 <img src="${res.avatar}">
-                        //             `
-                        //         );
-                        //     }
-                        // });
                         let number = 1;
                         let resultss = data.map(function(e) {
-
+                            let image = `<img data-name="${e['name']}" data-char-count="2" data-font-size="45" data-color="red" class="profile" />`;
+                            $('.profile').initial();
                             let created_at = moment(e['created_at']).fromNow();
                             return `
                                         <tr id="tabel_user">
@@ -186,7 +199,7 @@
                                             </td>
                                             <td>
                                                 <div>
-                                                    <img src="../assets/img/team-2.jpg" alt="No Image" class="avatar avatar-sm me-3">
+                                                    ${image}
                                                 </div>
                                             </td>
                                             <td class="text-center">
@@ -308,6 +321,13 @@
                 error: function(err) {
                     console.log(err)
                 }
+            });
+        }
+
+        function detailAkun(id){
+            $.get("{{ url('detail-akun') }}/" + id, {}, function(data, status) {
+                $("#imported-pagess").html(data);
+                $("#exampleModal4").modal('show');
             });
         }
 
