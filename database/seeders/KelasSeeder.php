@@ -20,8 +20,7 @@ class KelasSeeder extends Seeder
             [
                 'kelas' => 'X',
                 'jurusan' => 'PPLG',
-                'jumlah_siswa' => '30',
-                'guru_pengampu' => 'Guru 1',
+                'jumlah_siswa' => '0',
                 'angkatan' => '10',
                 'tahun_ajaran' => '2019/2023',
                 'status' => 'aktif'
@@ -29,8 +28,7 @@ class KelasSeeder extends Seeder
             [
                 'kelas' => 'X',
                 'jurusan' => 'DKV1',
-                'jumlah_siswa' => '30',
-                'guru_pengampu' => 'Guru 2',
+                'jumlah_siswa' => '0',
                 'angkatan' => '10',
                 'tahun_ajaran' => '2019/2023',
                 'status' => 'aktif'
@@ -38,8 +36,7 @@ class KelasSeeder extends Seeder
             [
                 'kelas' => 'X',
                 'jurusan' => 'DKV2',
-                'jumlah_siswa' => '30',
-                'guru_pengampu' => 'Guru 2',
+                'jumlah_siswa' => '0',
                 'angkatan' => '10',
                 'tahun_ajaran' => '2019/2023',
                 'status' => 'aktif'
@@ -47,8 +44,7 @@ class KelasSeeder extends Seeder
             [
                 'kelas' => 'X',
                 'jurusan' => 'TKRO',
-                'jumlah_siswa' => '30',
-                'guru_pengampu' => 'Guru 3',
+                'jumlah_siswa' => '0',
                 'angkatan' => '10',
                 'tahun_ajaran' => '2019/2023',
                 'status' => 'aktif'
@@ -56,8 +52,7 @@ class KelasSeeder extends Seeder
             [
                 'kelas' => 'X',
                 'jurusan' => 'TKP',
-                'jumlah_siswa' => '30',
-                'guru_pengampu' => 'Guru 4',
+                'jumlah_siswa' => '0',
                 'angkatan' => '10',
                 'tahun_ajaran' => '2019/2023',
                 'status' => 'aktif'
@@ -65,8 +60,7 @@ class KelasSeeder extends Seeder
             [
                 'kelas' => 'X',
                 'jurusan' => 'KULINER',
-                'jumlah_siswa' => '30',
-                'guru_pengampu' => 'Guru 5',
+                'jumlah_siswa' => '0',
                 'angkatan' => '10',
                 'tahun_ajaran' => '2019/2023',
                 'status' => 'aktif'
@@ -75,8 +69,7 @@ class KelasSeeder extends Seeder
             [
                 'kelas' => 'XI',
                 'jurusan' => 'RPL',
-                'jumlah_siswa' => '30',
-                'guru_pengampu' => 'Guru 1',
+                'jumlah_siswa' => '0',
                 'angkatan' => '10',
                 'tahun_ajaran' => '2019/2023',
                 'status' => 'aktif'
@@ -84,8 +77,7 @@ class KelasSeeder extends Seeder
             [
                 'kelas' => 'XI',
                 'jurusan' => 'MM',
-                'jumlah_siswa' => '30',
-                'guru_pengampu' => 'Guru 2',
+                'jumlah_siswa' => '0',
                 'angkatan' => '10',
                 'tahun_ajaran' => '2019/2023',
                 'status' => 'aktif'
@@ -93,8 +85,7 @@ class KelasSeeder extends Seeder
             [
                 'kelas' => 'XI',
                 'jurusan' => 'TKRO',
-                'jumlah_siswa' => '30',
-                'guru_pengampu' => 'Guru 3',
+                'jumlah_siswa' => '0',
                 'angkatan' => '10',
                 'tahun_ajaran' => '2019/2023',
                 'status' => 'aktif'
@@ -102,8 +93,7 @@ class KelasSeeder extends Seeder
             [
                 'kelas' => 'XI',
                 'jurusan' => 'BKP',
-                'jumlah_siswa' => '30',
-                'guru_pengampu' => 'Guru 4',
+                'jumlah_siswa' => '0',
                 'angkatan' => '10',
                 'tahun_ajaran' => '2019/2023',
                 'status' => 'aktif'
@@ -111,8 +101,7 @@ class KelasSeeder extends Seeder
             [
                 'kelas' => 'XI',
                 'jurusan' => 'TB',
-                'jumlah_siswa' => '30',
-                'guru_pengampu' => 'Guru 5',
+                'jumlah_siswa' => '0',
                 'angkatan' => '10',
                 'tahun_ajaran' => '2019/2023',
                 'status' => 'aktif'
@@ -121,8 +110,7 @@ class KelasSeeder extends Seeder
             [
                 'kelas' => 'XII',
                 'jurusan' => 'RPL',
-                'jumlah_siswa' => '30',
-                'guru_pengampu' => 'Guru 1',
+                'jumlah_siswa' => '0',
                 'angkatan' => '10',
                 'tahun_ajaran' => '2019/2023',
                 'status' => 'aktif'
@@ -130,8 +118,7 @@ class KelasSeeder extends Seeder
             [
                 'kelas' => 'XII',
                 'jurusan' => 'MM',
-                'jumlah_siswa' => '30',
-                'guru_pengampu' => 'Guru 2',
+                'jumlah_siswa' => '0',
                 'angkatan' => '10',
                 'tahun_ajaran' => '2019/2023',
                 'status' => 'aktif'
@@ -139,8 +126,7 @@ class KelasSeeder extends Seeder
             [
                 'kelas' => 'XII',
                 'jurusan' => 'TKRO',
-                'jumlah_siswa' => '30',
-                'guru_pengampu' => 'Guru 3',
+                'jumlah_siswa' => '0',
                 'angkatan' => '10',
                 'tahun_ajaran' => '2019/2023',
                 'status' => 'aktif'
@@ -148,8 +134,7 @@ class KelasSeeder extends Seeder
             [
                 'kelas' => 'XII',
                 'jurusan' => 'BKP',
-                'jumlah_siswa' => '30',
-                'guru_pengampu' => 'Guru 4',
+                'jumlah_siswa' => '0',
                 'angkatan' => '10',
                 'tahun_ajaran' => '2019/2023',
                 'status' => 'aktif'
@@ -157,8 +142,7 @@ class KelasSeeder extends Seeder
             [
                 'kelas' => 'XII',
                 'jurusan' => 'TB',
-                'jumlah_siswa' => '30',
-                'guru_pengampu' => 'Guru 5',
+                'jumlah_siswa' => '0',
                 'angkatan' => '10',
                 'tahun_ajaran' => '2019/2023',
                 'status' => 'aktif'

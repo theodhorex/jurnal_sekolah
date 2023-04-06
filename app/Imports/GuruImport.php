@@ -7,6 +7,7 @@ use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class GuruImport implements ToModel
 {
@@ -22,7 +23,7 @@ class GuruImport implements ToModel
             'email' => $row[1], 
             'role' => $row[2],
             'mapel' => $row[3], 
-            'password' => Hash::make($row[4]), 
+            'password' => Hash::make('123'), 
         ]);
     }
 }

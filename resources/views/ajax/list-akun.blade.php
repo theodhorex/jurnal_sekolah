@@ -19,9 +19,11 @@
             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                 Dibuat
             </th>
+            @if(Auth::user()->role == 'admin')
             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                 Aksi
             </th>
+            @endif
         </tr>
     </thead>
     <tbody id="target_result">

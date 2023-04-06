@@ -95,7 +95,7 @@
                             class="fas fa-lg fa-list-ul ps-2 pe-2 text-center text-dark {{ (Request::is('user-management') ? 'text-white' : 'text-dark') }} "
                             aria-hidden="true"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Manajemen Pengguna</span>
+                    <span class="nav-link-text ms-1">@if(Auth::user()->role == 'admin') Manajemen Pengguna @else List Akun @endif</span>
                 </a>
             </li>
             @endif

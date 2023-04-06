@@ -403,8 +403,8 @@ class MainController extends Controller
         ]);
         $file = $request->file('file');
         $nama_file = rand() . $file->getClientOriginalName();
-        $file->move('file_siswa', $nama_file);
-        Excel::import(new GuruImport, public_path('/file_siswa/' . $nama_file));
+        $file->move('file_guru', $nama_file);
+        Excel::import(new GuruImport, public_path('/file_guru/' . $nama_file));
 
         return redirect('/user-management')->with('success', 'Data akun guru berhasil diimport!');
     }
@@ -414,7 +414,8 @@ class MainController extends Controller
     // Testing function 
     public function testFunction()
     {
-        return view('playground/pg');
+        $lol = Str::random();
+        echo $lol;
     }
 
 

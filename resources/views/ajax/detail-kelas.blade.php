@@ -12,12 +12,10 @@
         @if (Auth::user()->role != 'admin')
             <div class="col">
                 <h4 class="mb-0">{{ $kelas->kelas }} {{ $kelas->jurusan }}</h4>
-                <span>Angkatan: <b class="text-capitalize">{{ $kelas->angkatan }}</b></span>
             </div>
         @else
             <div class="col-6">
                 <h4 class="mb-0">{{ $kelas->kelas }} {{ $kelas->jurusan }}</h4>
-                <span>Angkatan: <b class="text-capitalize">{{ $kelas->angkatan }}</b></span>
             </div>
             <div class="col-6">
                 <a onClick="hapusKelas()" class="float-end mx-1">
@@ -46,6 +44,11 @@
                     semua</a>
             </div>
         </div>
+        @if(!empty($collection))
+        <span class="fw-semibold">
+            Belum ada guru pengampu
+        </span>
+        @else
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -65,6 +68,7 @@
                 @endforeach
             </tbody>
         </table>
+        @endif
     @endif
     <hr>
 

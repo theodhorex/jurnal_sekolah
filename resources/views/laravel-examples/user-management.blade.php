@@ -190,7 +190,6 @@
                         let number = 1;
                         let resultss = data.map(function(e) {
                             let image = `<img data-name="${e['name']}" data-char-count="2" data-font-size="45" data-color="red" class="profile" />`;
-                            $('.profile').initial();
                             let created_at = moment(e['created_at']).fromNow();
                             return `
                                         <tr id="tabel_user">
@@ -217,16 +216,20 @@
                                                     class="text-secondary text-xs font-weight-bold">${created_at}</span>
                                             </td>
                                             <td class="text-center">
-                                                <a onClick="editAkun(${e['id']})" class="mx-3"
-                                                    data-bs-toggle="tooltip" data-bs-original-title="Edit user">
+                                                <a onClick="editAkun(${e['id']})" class="cursor-pointer" data-bs-toggle="tooltip"
+                                                    data-bs-original-title="Edit user">
                                                     <i class="fas fa-user-edit text-secondary"></i>
                                                 </a>
-                                                <span onClick="hapusAkun(${e['id']})">
+                                                <span>
+                                                    <i onClick="detailAkun(${e['id']})" class="cursor-pointer fas fa-info-circle text-secondary"></i>
+                                                </span>
+                                                <span onClick="hapusAkun(${e['id']})" class="mx-1">
                                                     <i class="cursor-pointer fas fa-trash text-secondary"></i>
                                                 </span>
                                             </td>
                                         </tr>
                             `;
+                            $('.profile').initial();
                         });
                         $('#target_result').html(resultss);
                     },
@@ -274,11 +277,14 @@
                                                     class="text-secondary text-xs font-weight-bold">${created_at}</span>
                                             </td>
                                             <td class="text-center">
-                                                <a onClick="editAkun(${e['id']})" class="mx-3"
-                                                    data-bs-toggle="tooltip" data-bs-original-title="Edit user">
+                                                <a onClick="editAkun(${e['id']})" class="cursor-pointer" data-bs-toggle="tooltip"
+                                                    data-bs-original-title="Edit user">
                                                     <i class="fas fa-user-edit text-secondary"></i>
                                                 </a>
-                                                <span onClick="hapusAkun(${e['id']})">
+                                                <span>
+                                                    <i onClick="detailAkun(${e['id']})" class="cursor-pointer fas fa-info-circle text-secondary"></i>
+                                                </span>
+                                                <span onClick="hapusAkun(${e['id']})" class="mx-1">
                                                     <i class="cursor-pointer fas fa-trash text-secondary"></i>
                                                 </span>
                                             </td>

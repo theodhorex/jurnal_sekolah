@@ -17,9 +17,9 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             'name' => 'admin',
-            'email' => 'admin@softui.com',
+            'email' => 'admin@bn.com',
             'role' => 'admin',
-            'password' => Hash::make('secret'),
+            'password' => Hash::make('bagimunegeriku'),
             'created_at' => now(),
             'updated_at' => now()
         ]);
