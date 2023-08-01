@@ -12,7 +12,7 @@
                             <a href="#" class="text-decoration-none ms-2">{{ $kelass->tahun_ajaran }}</a>
                         </div>
                         <div class="col-6">
-                            <img src="@if ($kelass->jurusan == 'RPL') {{ asset('assets/img/logo-kelas/Group 4.png') }}@elseif($kelass->jurusan == 'PPLG'){{ asset('assets/img/logo-kelas/Group 4.png') }}@elseif($kelass->jurusan == 'MM'){{ asset('assets/img/logo-kelas/Group 5.png') }}@elseif($kelass->jurusan == 'DKV1'){{ asset('assets/img/logo-kelas/Group 5.png') }}@elseif($kelass->jurusan == 'DKV2'){{ asset('assets/img/logo-kelas/Group 5.png') }}@elseif($kelass->jurusan == 'TKRO'){{ asset('assets/img/logo-kelas/Group 8.png') }}@elseif($kelass->jurusan == 'TB'){{ asset('assets/img/logo-kelas/Group 6.png') }}@elseif($kelass->jurusan == 'KULINER'){{ asset('assets/img/logo-kelas/Group 6.png') }}@elseif($kelass->jurusan == 'BKP'){{ asset('assets/img/logo-kelas/Group 7.png') }}@elseif($kelass->jurusan == 'TKP'){{ asset('assets/img/logo-kelas/Group 7.png') }} @endif"
+                            <img src="@if(str_contains($kelass->jurusan, 'PPLG')){{ asset('assets/img/logo-kelas/Group 4.png') }}@elseif(str_contains($kelass->jurusan, 'DKV')){{ asset('assets/img/logo-kelas/Group 5.png') }}@elseif(str_contains($kelass->jurusan, 'TP')){{ asset('assets/img/logo-kelas/Group 8.png') }}@elseif(str_contains($kelass->jurusan, 'KULINER')){{ asset('assets/img/logo-kelas/Group 6.png') }}@elseif(str_contains($kelass->jurusan, 'TKP')){{ asset('assets/img/logo-kelas/Group 7.png') }} @endif"
                                 alt="..." class="avatar shadow float-end">
                         </div>
                     </div>

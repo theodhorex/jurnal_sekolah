@@ -66,7 +66,7 @@
                                     <a href="#" class="text-decoration-none ms-2">{{ $kelasss->tahun_ajaran }}</a>
                                 </div>
                                 <div class="col-6">
-                                    <img src="@if ($kelasss->jurusan == 'RPL') {{ asset('assets/img/logo-kelas/Group 4.png') }}@elseif($kelasss->jurusan == 'PPLG'){{ asset('assets/img/logo-kelas/Group 4.png') }}@elseif($kelasss->jurusan == 'MM'){{ asset('assets/img/logo-kelas/Group 5.png') }}@elseif($kelasss->jurusan == 'DKV1'){{ asset('assets/img/logo-kelas/Group 5.png') }}@elseif($kelasss->jurusan == 'DKV2'){{ asset('assets/img/logo-kelas/Group 5.png') }}@elseif($kelasss->jurusan == 'TKRO'){{ asset('assets/img/logo-kelas/Group 8.png') }}@elseif($kelasss->jurusan == 'TB'){{ asset('assets/img/logo-kelas/Group 6.png') }}@elseif($kelasss->jurusan == 'KULINER'){{ asset('assets/img/logo-kelas/Group 6.png') }}@elseif($kelasss->jurusan == 'BKP'){{ asset('assets/img/logo-kelas/Group 7.png') }}@elseif($kelasss->jurusan == 'TKP'){{ asset('assets/img/logo-kelas/Group 7.png') }} @endif"
+                                    <img src="@if (str_contains($kelasss->jurusan, 'RPL')) {{ asset('assets/img/logo-kelas/Group 4.png') }}@elseif(str_contains($kelasss->jurusan, 'PPLG')){{ asset('assets/img/logo-kelas/Group 4.png') }}@elseif($kelasss->jurusan == 'MM'){{ asset('assets/img/logo-kelas/Group 5.png') }}@elseif(str_contains($kelasss->jurusan, 'DKV')){{ asset('assets/img/logo-kelas/Group 5.png') }}@elseif($kelasss->jurusan == 'TKRO'){{ asset('assets/img/logo-kelas/Group 8.png') }}@elseif($kelasss->jurusan == 'TB'){{ asset('assets/img/logo-kelas/Group 6.png') }}@elseif($kelasss->jurusan == 'KULINER'){{ asset('assets/img/logo-kelas/Group 6.png') }}@elseif($kelasss->jurusan == 'BKP'){{ asset('assets/img/logo-kelas/Group 7.png') }}@elseif($kelasss->jurusan == 'TKP'){{ asset('assets/img/logo-kelas/Group 7.png') }} @endif"
                                         alt="..." class="avatar shadow float-end">
                                 </div>
                             </div>
@@ -91,7 +91,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Kelas</h1>
-                    <button id="button_close_detail_kelas" type="button" class="border-0 bg-transparent text-secondary"
+                    <button id="button_close_tambah_kelas" type="button" class="border-0 bg-transparent text-secondary"
                         data-bs-dismiss="modal" aria-label="Close" style=""><i class="fa fa-times"></i></button>
                 </div>
                 <div class="modal-body">
@@ -214,7 +214,7 @@
                     angkatan: $('#angkatan').val(),
                 },
                 success: function(data) {
-                    $('.btn-close').click();
+                    $('#button_close_tambah_kelas').click();
                     listKelas();
                     $('#msg_target').html('Berhasil menambahkan kelas!');
                     $('#alert-success').removeClass('d-none');

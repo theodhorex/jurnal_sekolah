@@ -116,12 +116,12 @@ class MainController extends Controller
     public function listKelas()
     {
         if (!Str::contains(Auth::user()->role, 'guru')) {
-            $kelas = Kelas::where('status', 'aktif')->get();
+            $kelas = Kelas::where('status', 'aktif')->orderBy('kelas')->get();
             $siswa = Siswa::all();
         } else {
-            $kelas = Kelas::where('guru_pengampu', 'LIKE', '%' . Auth::user()->name . '%')->get();
+            $kelas = Kelas::where('guru_pengampu', 'LIKE', '%' . Auth::user()->name . '%')->orderBy('kelas')->get();
             if (Str::contains(Auth::user()->role, 'guru')) {
-                $general_kelas = Kelas::where('guru_pengampu', 'NOT LIKE', '%' . Auth::user()->name . '%')->get();
+                $general_kelas = Kelas::where('guru_pengampu', 'NOT LIKE', '%' . Auth::user()->name . '%')->orderBy('kelas')->get();
             }
             $siswa = Siswa::all();
         }
@@ -188,14 +188,6 @@ class MainController extends Controller
     {
         $kelas = Kelas::find($id);
         $undone_jurnal_kelas = Jurnal::where('id_kelas', $id);
-        // $jurnal_kelas = collect($undone_jurnal_kelas)->map(function ($item) {
-        //     $carbon = Carbon::createFromFormat('Y-m-d H:i:s', $item['tanggal']);
-        //     // $timestamp = $carbon->timestamp;
-        //     // $item['tanggal'] = $timestamp;
-        //     $item['minggu_ke'] = $carbon->weekOfMonth;
-        //     $item['bulan_apa'] = $carbon -> month;
-        //     return $item;
-        // });
 
         $jurnal_kelas = $undone_jurnal_kelas->orderBy(DB::raw('MONTH(tanggal_pengajaran)'), 'desc')->get();
         return view('timeline-kelas', compact(['kelas', 'jurnal_kelas']));
@@ -347,7 +339,8 @@ class MainController extends Controller
             $k->jumlah_siswa = Siswa::where('kelas', $k->kelas)->where('jurusan', $k->jurusan)->where('status', 'aktif')->count();
             $k->save();
         }
-        echo 'Berhasil!';
+
+        return redirect()->back();
     }
 
     // Export PDF

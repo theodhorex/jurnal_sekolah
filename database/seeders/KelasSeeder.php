@@ -43,7 +43,7 @@ class KelasSeeder extends Seeder
             ],
             [
                 'kelas' => 'X',
-                'jurusan' => 'TKRO',
+                'jurusan' => 'TP',
                 'jumlah_siswa' => '0',
                 'angkatan' => '10',
                 'tahun_ajaran' => '2019/2023',
@@ -68,7 +68,7 @@ class KelasSeeder extends Seeder
             
             [
                 'kelas' => 'XI',
-                'jurusan' => 'RPL',
+                'jurusan' => 'PPLG',
                 'jumlah_siswa' => '0',
                 'angkatan' => '10',
                 'tahun_ajaran' => '2019/2023',
@@ -76,7 +76,7 @@ class KelasSeeder extends Seeder
             ],
             [
                 'kelas' => 'XI',
-                'jurusan' => 'MM',
+                'jurusan' => 'DKV',
                 'jumlah_siswa' => '0',
                 'angkatan' => '10',
                 'tahun_ajaran' => '2019/2023',
@@ -84,7 +84,7 @@ class KelasSeeder extends Seeder
             ],
             [
                 'kelas' => 'XI',
-                'jurusan' => 'TKRO',
+                'jurusan' => 'TP',
                 'jumlah_siswa' => '0',
                 'angkatan' => '10',
                 'tahun_ajaran' => '2019/2023',
@@ -92,7 +92,7 @@ class KelasSeeder extends Seeder
             ],
             [
                 'kelas' => 'XI',
-                'jurusan' => 'BKP',
+                'jurusan' => 'TKP',
                 'jumlah_siswa' => '0',
                 'angkatan' => '10',
                 'tahun_ajaran' => '2019/2023',
@@ -100,7 +100,7 @@ class KelasSeeder extends Seeder
             ],
             [
                 'kelas' => 'XI',
-                'jurusan' => 'TB',
+                'jurusan' => 'KULINER',
                 'jumlah_siswa' => '0',
                 'angkatan' => '10',
                 'tahun_ajaran' => '2019/2023',
@@ -109,7 +109,7 @@ class KelasSeeder extends Seeder
             
             [
                 'kelas' => 'XII',
-                'jurusan' => 'RPL',
+                'jurusan' => 'PPLG',
                 'jumlah_siswa' => '0',
                 'angkatan' => '10',
                 'tahun_ajaran' => '2019/2023',
@@ -117,7 +117,7 @@ class KelasSeeder extends Seeder
             ],
             [
                 'kelas' => 'XII',
-                'jurusan' => 'MM',
+                'jurusan' => 'DKV',
                 'jumlah_siswa' => '0',
                 'angkatan' => '10',
                 'tahun_ajaran' => '2019/2023',
@@ -125,7 +125,7 @@ class KelasSeeder extends Seeder
             ],
             [
                 'kelas' => 'XII',
-                'jurusan' => 'TKRO',
+                'jurusan' => 'TP',
                 'jumlah_siswa' => '0',
                 'angkatan' => '10',
                 'tahun_ajaran' => '2019/2023',
@@ -133,7 +133,7 @@ class KelasSeeder extends Seeder
             ],
             [
                 'kelas' => 'XII',
-                'jurusan' => 'BKP',
+                'jurusan' => 'TKP',
                 'jumlah_siswa' => '0',
                 'angkatan' => '10',
                 'tahun_ajaran' => '2019/2023',
@@ -141,7 +141,7 @@ class KelasSeeder extends Seeder
             ],
             [
                 'kelas' => 'XII',
-                'jurusan' => 'TB',
+                'jurusan' => 'KULINER',
                 'jumlah_siswa' => '0',
                 'angkatan' => '10',
                 'tahun_ajaran' => '2019/2023',
